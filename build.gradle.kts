@@ -7,6 +7,7 @@
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.3.61"
+    id("com.github.johnrengelman.shadow") version "5.2.0"
 
     // Apply the application plugin to add support for building a CLI application.
     application
@@ -35,15 +36,4 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClassName = "app.AppKt"
-}
-
-tasks.jar {
-    manifest {
-        attributes["Main-Class"] = "app.AppKt"
-    }
-
-    // This line of code recursively collects and copies all of a project's files
-    // and adds them to the JAR itself. One can extend this task, to skip certain 
-    // files or particular types at will
-    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
 }

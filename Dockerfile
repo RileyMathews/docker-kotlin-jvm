@@ -1,15 +1,11 @@
-FROM amazonlinux:2
+FROM docker.pkg.github.com/rileymathews/docker-base-dev/docker-base-dev:5
 
 RUN yum -y update && yum -y install \
-    java-11-amazon-corretto-headless \
-    curl \
-    unzip \
-    gzip \
-    tar \
-    yum clean \
+    java-11-openjdk-devel &&\
+    yum clean all\
     && \
     # install kotlin compiler
-    curl -LJo /tmp/kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v1.3.61/kotlin-compiler-1.3.61.zip && \
+    curl -LJo /tmp/kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v1.3.70/kotlin-compiler-1.3.70.zip && \
     unzip /tmp/kotlin.zip -d /opt/kotlin && \
     rm -rf /tmp/kotlin.zip \
     && \
@@ -22,7 +18,7 @@ RUN yum -y update && yum -y install \
 ENV PATH=$PATH:/opt/gradle/gradle-6.1/bin:/opt/kotlin/kotlinc/bin
 
 # set java home
-ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto.x86_64/
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.6.10-0.el8_1.x86_64
 
 WORKDIR /code
-CMD ["bash"]
+CMD ["zsh"]

@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/rileymathews/docker-base-dev/docker-base-dev:5
+FROM rileymathews/base
 
 RUN yum -y update && yum -y install \
     java-11-openjdk-devel &&\

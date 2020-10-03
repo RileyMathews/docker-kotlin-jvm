@@ -1,11 +1,8 @@
 FROM rileymathews/base
+RUN amazon-linux-extras install java-openjdk11 -y
 
-RUN yum -y update && yum -y install \
-    java-11-openjdk-devel &&\
-    yum clean all\
-    && \
-    # install kotlin compiler
-    curl -LJo /tmp/kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v1.3.70/kotlin-compiler-1.3.70.zip && \
+# install kotlin compiler
+RUN curl -LJo /tmp/kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v1.3.70/kotlin-compiler-1.3.70.zip && \
     unzip /tmp/kotlin.zip -d /opt/kotlin && \
     rm -rf /tmp/kotlin.zip \
     && \

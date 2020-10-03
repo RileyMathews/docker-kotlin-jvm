@@ -15,7 +15,7 @@ RUN curl -LJo /tmp/kotlin.zip https://github.com/JetBrains/kotlin/releases/downl
 ENV PATH=$PATH:/opt/gradle/gradle-6.1/bin:/opt/kotlin/kotlinc/bin
 
 # set java home
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.6.10-0.el8_1.x86_64
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.7.10-4.amzn2.0.1.x86_64
 
 WORKDIR /code
 CMD ["zsh"]
